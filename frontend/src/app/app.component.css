@@ -6,6 +6,31 @@
     gap: 60px;
 }
 
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px
+}
+
+select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+}
+
+/* Estilo al pasar el mouse sobre el select */
+select:hover {
+    border-color: #555;
+}
+
+/* Estilo cuando está enfocado */
+select:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
 textarea {
     width: 500px;
     height: 250px;
@@ -15,4 +40,49 @@ textarea {
     border-radius: 6px;
     transition: border-color 0.3s;
     resize: none;
+}
+
+.response {
+    position: relative;
+}
+
+button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    margin: 10px;
+    border: none;
+    background-color: transparent;
+    border-radius: 3px;
+    font-size: 1.4rem;
+}
+
+.loader {
+    position: absolute;
+    bottom: 35%;
+    right: 45%;
+    width: 38px;
+    height: 38px;
+    border: 5px solid #FFF;
+    border-bottom-color: #3498db;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: rgb(232, 232, 232);
 }
