@@ -3,9 +3,9 @@
     <div class="input-container">
       <select formControlName="sourceLanguageInput">
         <option selected value="">Selecciona un idioma</option>
-        <option value="español">Español</option>
-        <option value="arabe">Árabe</option>
-        <option value="italiano">Italiano</option>
+        @for (language of languages; track $index) {
+        <option [value]="language.abbreviation">{{ language.name }}</option>
+        }
       </select>
       <textarea
         formControlName="userInput"
@@ -18,9 +18,11 @@
       }
       <select formControlName="targetLanguageInput">
         <option selected value="">Selecciona un idioma</option>
-        <option value="español">Español</option>
-        <option value="arabe">Árabe</option>
-        <option value="italiano">Italiano</option>
+        @for (language of languages; track $index) {
+        <option [value]="language.abbreviation">
+          {{ language.name }}
+        </option>
+        }
       </select>
       <textarea disabled>{{ response }}</textarea>
       <button (click)="copyClipboard()">

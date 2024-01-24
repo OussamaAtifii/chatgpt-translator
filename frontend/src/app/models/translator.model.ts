@@ -4,3 +4,8 @@ export interface Translator {
     sourceLanguage: string;
     inputMessage: string;
 }
+
+export interface Language {
+    abbreviation: string;
+    name: string;
+}
