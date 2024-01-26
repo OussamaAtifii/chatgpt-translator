@@ -12,6 +12,11 @@
         placeholder="Escribe el texto a traducir aquí"
       ></textarea>
     </div>
+    <div>
+      <button (click)="changeLanguages()" class="change">
+        <i class="fa-solid fa-arrow-right-arrow-left"></i>
+      </button>
+    </div>
     <div class="input-container response">
       @if (loading) {
       <span class="loader"></span>
@@ -25,7 +30,7 @@
         }
       </select>
       <textarea disabled>{{ response }}</textarea>
-      <button (click)="copyClipboard()">
+      <button (click)="copyClipboard()" class="clipboard">
         <i class="fa-regular fa-clipboard"></i>
       </button>
     </div>
