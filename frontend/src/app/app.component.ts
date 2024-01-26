@@ -15,11 +15,10 @@ import { LANGUAGES } from './constants/languages';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-
   form!: FormGroup;
   loading: boolean = false;
   response?: string = '';
-  sourceLanguage: string = '';
+  sourceLanguage: string = window.navigator.language.substring(0, 2);
   targetLanguage: string = '';
   languages: Language[] = LANGUAGES;
 
@@ -29,7 +28,7 @@ export class AppComponent implements OnInit {
   ) {
     this.form = this.formBuilder.group({
       userInput: '',
-      sourceLanguageInput: '',
+      sourceLanguageInput: this.sourceLanguage,
       targetLanguageInput: ''
     });
   }
@@ -57,8 +56,6 @@ export class AppComponent implements OnInit {
   }
 
   getSourceLanguage(language: string) {
-    console.log(language);
-
     this.sourceLanguage = language;
   }
 
@@ -66,13 +63,15 @@ export class AppComponent implements OnInit {
     navigator.clipboard.writeText(this.response || '');
   }
 
-  private createTranslatorObject(input: string): Translator {
-    console.log({
-      targetLanguage: this.targetLanguage,
-      sourceLanguage: this.sourceLanguage,
-      inputMessage: input
-    });
+  changeLanguages() {
+    let sourceLanguage = this.sourceLanguage;
+    let targetLanguage = this.targetLanguage;
 
+    this.form.get('sourceLanguageInput')?.setValue(targetLanguage);
+    this.form.get('targetLanguageInput')?.setValue(sourceLanguage);
+  }
+
+  private createTranslatorObject(input: string): Translator {
     return {
       targetLanguage: this.targetLanguage,
       sourceLanguage: this.sourceLanguage,
