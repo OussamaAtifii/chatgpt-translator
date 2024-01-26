@@ -3,10 +3,7 @@ package com.translator.backend.controllers;
 import com.translator.backend.models.Translator;
 import com.translator.backend.services.TranslatorService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 
@@ -19,6 +16,7 @@ public class TranslatorController {
         this.translatorService = translatorService;
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping()
     public ResponseEntity<HashMap<String, Object>> translate(@RequestBody Translator translator) {
 

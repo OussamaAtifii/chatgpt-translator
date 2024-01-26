@@ -11,6 +11,6 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   translate(translate: Translator): Observable<Translator> {
-    return this.http.post<Translator>('http://localhost:8080/translator', translate);
+    return this.http.post<Translator>('http://localhost:8080/api/v1/translator', translate);
   }
 }
